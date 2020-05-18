@@ -96,6 +96,7 @@ function finalScore(inning, numOf){
   return score;    
 }
 //console.log(finalScore(inning, 9));
+//console.log(finalScore(inning, 9));
 /* Task 4: 
 
 Create a function called `scoreboard` that accepts the following parameters: 
@@ -117,20 +118,33 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(inning, numOf) {
+function scoreboard(cb, numOf) {
   let score1 = 0;
   let score2 = 0;
-  let inn = 0;
-  return function win(){
-    score1 = inning() + score1;
-    score2 = inning() + score2;
-    inn++;
-    return "Inning" + " " + inn + ":" + " " + score1 + " - " + score2; 
-  }      
- 
+  for(let i = 1; i <= numOf; i++){
+    if(i === 1){
+      score1 = cb() + score1;
+      score2 = cb() + score2;
+      console.log(i + "st" + " inning: " + score1 + " - " + score2)
+    } else if(i === 2){
+      score1 = cb() + score1;
+      score2 = cb() + score2;
+      console.log(i + "nd" + " inning: " + score1 + " - " + score2)
+    } else if(i === 3){
+      score1 = cb() + score1;
+      score2 = cb() + score2;
+      console.log(i + "rd" + " inning: " + score1 + " - " + score2)
+    } else{
+      score1 = cb() + score1;
+      score2 = cb() + score2;
+      console.log(i + "th" + " inning: " + score1 + " - " + score2)
+    }
+  }
+  return "Final Score: " + score1 + " - " + score2;     
 }
 
-const baseballGame = scoreboard(inning, 9);
-console.log(baseballGame());
-console.log(baseballGame());
-console.log(baseballGame());
+//const baseballGame = scoreboard(inning, 9);
+console.log(scoreboard(inning, 9));
+
+
+
